@@ -1,0 +1,202 @@
+{smcl}
+{* 11Dec2022}{...}
+{hline}
+help for {hi:ztree2stata}{right:Author:  Kan Takeuchi (Ver. Dec 11, 2022)}
+{hline}
+
+{p 0 14 2}
+{bf:[Z] ztree2stata} {hline 2} Import a data file saved by z-Tree
+
+{marker syntax}{...}
+{title:Syntax}
+
+{pstd}
+{cmd:ztree2stata} {it:{help ztree2stata##table:table}} {cmd:using} {it:{help filename}} [{cmd:,} {it:options}]
+
+{marker table}{...}
+{p 4 4 2}
+{it:table} specifies a table to import.
+
+{p 4 4 2}
+{it:filename} specifies a z-Tree data file to import.
+
+{synoptset 25}{...}
+{synopthdr:options}
+{synoptline}
+{synopt :{opt clear}}replace data in memory{p_end}
+{synopt :{opt sa:ve}}save the data in memory{p_end}
+{synopt :{opt replace}}overwrite existing dataset{p_end}
+{synopt :{cmdab:tr:eatment(}{it:{help numlist}})}specify treatments to import{p_end}
+{synopt :{cmdab:exc:ept(}{it:{help ztree2stata##namelist:namelist}})}specifies strings that will be used to skip the automated renaming.{p_end}
+{synopt :{cmdab:str:ing(}{it:{help ztree2stata##string:string_varlist}})}(no longer needed){p_end}
+
+
+{marker description}{...}
+{title:Description}
+
+{pstd}
+{cmd:ztree2stata} imports a z-Tree (Fischbacher, 2007) data file and converts it into Stata format.  Specifically ztree2stata 
+opens an ASCII text file saved by z-Tree, keeps the data of the specified table, 
+renames variables using the variable names in z-Tree, and 
+converts the data into numerical type if it is not in the {it:string_varlist}.  
+
+
+{marker import_options}{...}
+{title:Options}
+
+{phang}
+{cmd:clear} permits the data to be loaded even if there is a dataset already in 
+memory and even if that dataset has changed since the data were last saved. 
+
+{phang}
+{cmd:save} allows Stata to save the data in memory as filename-table.dta.
+
+{phang}
+{cmd:replace} permits {cmd:save} to overwrite an existing dataset. 
+
+{phang}
+{cmd:treatment(numlist)} specifies treatments that will be imported into memory. 
+If this option is omitted, then all treatments will be imported. 
+
+{phang}
+{cmd:except(string)} specifies strings that will be used to skip the automated renaming. 
+If there is any trouble with variable names, then the except option may solve it. See the example below for more details. 
+
+{phang}
+{cmd:string(string_varlist)} specifies variables to which destring (the conversion 
+process to numeric) is not applied. This option was necessary for the previous versions through 2014; 
+it is no longer required to specify which variable is a string in the current version. 
+
+
+{title:Remarks and examples}
+{pstd}
+z-Tree records the various data during the experiment in multiple tabular formats, and after the experiment is completed, 
+these tables are combined and output as a single tab-delimited ASCII file with xls extension. 
+There are several issues when Stata imports the file. They include, for example, 
+1. The file includes several tables (e.g., subjects, globals, and clients), though they must be separated for analysis. 
+2. Because the file includes variable names as strings, every numeric data is interpreted as a string. 
+3. When z-Tree data includes several treatments, the width of the selected table varies with treatments; 
+thus, variables may be recorded in different columns. 
+{cmd:ztree2stata} can handle these issues and conveniently convert the z-Tree data file into StataÅfs dta format. 
+
+
+{title:Quick Start}
+
+{pstd}
+Import the subjects table of {cmd:040517_1230.xls}{p_end}
+{phang2}{cmd:. ztree2stata subjects using 040517_1230.xls}
+
+{pstd}
+Import the globals table of {cmd:040517_1230.xls after clear the data in the memory{p_end}
+{phang2}{cmd:. ztree2stata globals using 040517_1230.xls, clear}
+
+{pstd}
+Import the data of from the 2nd and the 4th treatments and save the data in dta format{p_end}
+{phang2}{cmd:. ztree2stata subjects using 040517_1230.xls, treatment(2 4) save}
+
+{pstd}
+Import the subjects table of {cmd:040517_1230.xls} and {cmd:221211_1749.xls} and combine them{p_end}
+{phang2}{cmd:. ztree2stata subjects using 040517_1230.xls, save}{p_end}
+{phang2}{cmd:. ztree2stata subjects using 221213_1749.xls, clear save}{p_end}
+{phang2}{cmd:. use 040517_1230-subjects, clear}{p_end}
+{phang2}{cmd:. append using 221213_1749-subjects}{p_end}
+
+
+{title:Examples}
+
+{p 3 8 2}{cmd:. ztree2stata subjects using 040517XY.xls}
+
+{p 4 8 2}
+Stata reads {cmd:040517XY.xls} and keeps the data of the subjects table.  
+
+{p 4 8 2}
+{it:table} = {cmd:subjects}
+
+{p 8 8 2}
+Specify one of the tables which have been defined in z-Tree.  
+
+{p 4 8 2}
+{it:filename} = {cmd:040517XY.xls}
+
+{p 8 8 2}
+Stata looks for {cmd:040517XY.xls} in the current directory. Therefore, you need to put your data file in the current directory.  
+If the size of the file is too large, then you need to increase memory size before you use {cmd:ztree2stata}. See {cmd:[U] 7 Setting the size of memory} or help {help memory}. 
+
+
+{p 3 8 2}{cmd:. ztree2stata globals using 040517XY.xls, tr(2 4) save}
+
+{p 4 8 2}
+Stata opens {cmd:040517XY.xls} and keeps the data of the globals table in treatment 2 and 4. 
+
+{p 4 8 2}
+{it:options} = {cmd:tr(2 4)}
+
+{p 8 8 2}
+Stata reads the data of treatment 2 and 4. If the data does not include some of the specified treatments, then it returns an error.  
+
+{p 4 8 2}
+{it:options} = {cmd:save}
+
+{p 8 8 2}
+If {cmd:040517XY-globals.dta} does not exist yet, this option allows Stata to save the data in memory as {cmd:040517XY-globals.dta}; Otherwise, 
+Stata returns an error message and does not save the data in memory.  
+To overwrite the existing file, use {cmd:save} with {cmd:replace} option.  
+
+
+{p 3 16 2}{cmd:. ztree2stata subjects using 050301AB.xls, except(foo goo) }
+
+{p 4 8 2}
+{it:options} = {cmd:except(foo goo)}
+
+{p 8 8 5}
+If you have any trouble with variable names, then you may want to define 
+an exception.  In this example, {cmd:ztree2stata} renames a variable whose 
+name  includes ``foo'' and/or ``goo'' into foo# or goo#, where # is the 
+original column number where the variable is located.  For instance, 
+suppose that you have 3 variables in a z-Tree table --- ``food,'' ``good?'' 
+and ``goodfood!'' --- and that they are located in the 6th, 7th and 10th 
+column, respectively. Then, they will be renamed as ``foo6'', ``goo7'' and 
+``goo10.''  ``goodfood'' includes both of ``foo'' and ``goo.'' 
+However, since ``goo'' follows ``foo'' in the except option, `
+`goodfood'' is renamed as ``goo10.'' 
+
+
+{title:Technical Notes}
+
+{p 4 8 5}
+The ado and hlp files, ztree2stata.ado and ztree2stata.hlp, are available through the author's website. 
+
+{p 4 8 5}
+ztree2stata cannot open Excel files. A data file created by z-Tree is not an Excel file but a tab-delimited 
+ASCII file, while its extension is xls. Therefore, once a data file is overwritten as an Excel file, 
+{cmd: ztree2stata} can no longer open it.
+
+{p 4 8 5}
+The following symbols will be deleted from the variable names:
+exclamation marks (!), colons (:), semi-colons (;), equal signs (=), double quotation marks ("), and spaces ( ). 
+
+{p 4 8 5}
+The except option can be used to eliminate any other symbols or letters from variable names.
+
+{p 4 8 5}
+Note that when there is an unpaired double quotation mark in a dataset, Stata's import results may not be as intended. 
+
+{p 4 8 5}
+This command is provided as it is, without any warranty.
+
+
+{title:Author}
+
+{p 4 4 5}
+Kan Takeuchi, School of Information, University of Michigan, and Graduate School of Economics, Hitotsubashi University.
+Email {browse "mailto:kan@econ.hit-u.ac.jp":kan@econ.hit-u.ac.jp}.
+
+
+{title:Reference}
+
+{p 4 4 5}
+Fischbacher, U. 2007. z-Tree: Zurich Toolbox for Ready-made Economic Experiments, Experimental Economics, 10(2), pp.171-178.  
+({browse "http://www.iew.unizh.ch/ztree/index.php":http://www.iew.unizh.ch/ztree/index.php}). 
+
+{p 4 4 5}
+Takeuchi, K. 2023. ztree2stata: A data converter for z-Tree and Stata users. Journal of the Economic Science Association, forthcoming. 
