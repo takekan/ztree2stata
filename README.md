@@ -44,7 +44,7 @@ combine them
 
 ## Syntax
 
-`ztree2stata *table* using *filename* [, *options*]`
+ztree2stata *table* using *filename* [, *options*]
 
 ## Options
 
@@ -52,21 +52,21 @@ combine them
 already in memory and even if that dataset has changed since the data
 were last saved.
 
-<u>`sa`</u>`ve` allows Stata to save the data in memory as
+`save` allows Stata to save the data in memory as
 *filename-table*.dta.
 
 `replace` permits `save` to overwrite an existing dataset.
 
-<u>`tr`</u>`eatment`(*numlist*) specifies treatments that will be
+`treatment`(*numlist*) specifies treatments that will be
 imported into memory. If this option is omitted, then all treatments
 will be imported.
 
-<u>`exc`</u>`ept`(*string*) specifies strings that will be used to
+`except`(*string*) specifies strings that will be used to
 skip the automated renaming. If there is any trouble with variable
 names, then the except option may solve it. See the example below for
 more details.
 
-<u>`str`</u>`ing`(*string_varlist*) specifies variables to which
+`string`(*string_varlist*) specifies variables to which
 `destring` (the conversion process to numeric) is not applied. This
 option was necessary for the previous versions through 2014; it is no
 longer required to specify which variable is a string in the current
