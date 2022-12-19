@@ -19,28 +19,33 @@ my own ado-files?**.
 
 Import the subjects table of 040517_1230.xls
 
-&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 040517_1230.xls`
+```bash
+ztree2stata subjects using 040517_1230.xls
+```
 
 Import the globals table of 040517_1230.xls after clear the data in the
 memory
 
-&nbsp;&nbsp;&nbsp; `ztree2stata globals using 040517_1230.xls, clear`
+```bash
+ztree2stata globals using 040517_1230.xls, clear
+```
 
 Import the data of from the 2nd and the 4th treatments and save the data
 in dta format
 
-&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 040517_1230.xls, treatment(2 4) save`
+```bash
+ztree2stata subjects using 040517_1230.xls, treatment(2 4) save
+```
 
 Import the subjects table of 040517_1230.xls and 221211_1749.xls and
 combine them
 
-&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 040517_1230.xls, save`
-
-&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 221213_1749.xls, clear save`
-
-&nbsp;&nbsp;&nbsp; `use 040517_1230-subjects.dta, clear`
-
-&nbsp;&nbsp;&nbsp; `append using 221213_1749-subjects.dta`
+```bash
+ztree2stata subjects using 040517_1230.xls, save
+ztree2stata subjects using 221213_1749.xls, clear save
+use 040517_1230-subjects.dta, clear
+append using 221213_1749-subjects.dta
+```
 
 ## Syntax
 
