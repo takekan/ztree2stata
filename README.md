@@ -34,13 +34,13 @@ in dta format
 Import the subjects table of 040517_1230.xls and 221211_1749.xls and
 combine them
 
-&nbsp;&nbsp;&nbsp; ztree2stata subjects using 040517_1230.xls, save
+&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 040517_1230.xls, save`
 
-&nbsp;&nbsp;&nbsp; ztree2stata subjects using 221213_1749.xls, clear save
+&nbsp;&nbsp;&nbsp; `ztree2stata subjects using 221213_1749.xls, clear save`
 
-&nbsp;&nbsp;&nbsp; use 040517_1230-subjects.dta, clear
+&nbsp;&nbsp;&nbsp; `use 040517_1230-subjects.dta, clear`
 
-&nbsp;&nbsp;&nbsp; append using 221213_1749-subjects.dta`
+&nbsp;&nbsp;&nbsp; `append using 221213_1749-subjects.dta`
 
 ## Syntax
 
