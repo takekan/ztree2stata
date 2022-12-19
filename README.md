@@ -49,9 +49,7 @@ append using 221213_1749-subjects.dta
 
 ## Syntax
 
-```stata
-ztree2stata <em>table</em> using <em>filename</em> [, <em>options</em>]
-```
+<pre><code>ztree2stata <i>table</i> using <i>filename</i> [, <i>options</i>]</code></pre>
 
 ## Options
 
@@ -98,8 +96,9 @@ include, for example,
 `ztree2stata` can handle these issues and conveniently convert the z-Tree data file into Stata’s dta format.
 
 ### ⊳ Example 1
-
-`ztree2stata subjects using 040517XY.xls`
+```stata
+ztree2stata subjects using 040517XY.xls
+```
 
 Stata reads `040517XY.xls` and keeps the data of the subjects table.
 
@@ -112,9 +111,10 @@ Stata reads `040517XY.xls` and keeps the data of the subjects table.
     of the file is too large, then you need to increase the memory size
     before you use `ztree2stata`.
 
-### ⊳ Example
-
-`ztree2stata globals using 040517XY.xls, tr(2 4) save`
+### ⊳ Example 2
+```stata
+ztree2stata globals using 040517XY.xls, tr(2 4) save
+```
 
 Stata opens `040517XY.xls` and keeps the data of the globals table in
 treatment 2 and 4.
@@ -130,9 +130,10 @@ treatment 2 and 4.
     in memory. To overwrite the existing file, use `save` with `replace`
     option.
 
-### ⊳ Example
-
-`ztree2stata subjects using 050301AB.xls, except(foo goo) `
+### ⊳ Example 3
+```stata
+ztree2stata subjects using 050301AB.xls, except(foo goo) 
+```
 
 -   *options* = `except(foo goo)`  
     If you have any trouble with variable names, then you may want to
@@ -144,7 +145,7 @@ treatment 2 and 4.
     6th, 7th and 10th column, respectively. Then, they will be renamed
     as “foo6”, “goo7,” and “goo10.”
 
-### □ Technical Notes
+### Technical Notes
 
 -   The ado and hlp files, ztree2stata.ado and ztree2stata.hlp, are
     available through the author’s website.
