@@ -92,10 +92,10 @@ while `CurrentTreatment' > 0 {
 	}
 	rename v1 session
 	rename v2 treatment
-	rename v3 table
+	rename v3 tables
 
 	* delete irrelevant observations. 
-	keep if table== "`keepthistable'"
+	keep if tables == "`keepthistable'"
 	*** Bug fixed on April.18, 2014. Thanks to Lawrence.
 	destring treatment, replace
 	*** Bug fixed. 
