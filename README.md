@@ -174,4 +174,4 @@ Experiments,” *Experimental Economics*, 10(2), pp.171-178.
 (<http://www.iew.unizh.ch/ztree/index.php>)
 
 Takeuchi, K. 2023. “ztree2stata: A data converter for z-Tree and Stata users,”
-*Journal of the Economic Science Association*, R&R. 
+*Journal of the Economic Science Association*, forthcoming. 
