@@ -1,0 +1,43 @@
+221024_0215	1	globals	Period	NumPeriods	TreatmentNumber	TreatmentID	RepeatTreatment	Repetition												
+221024_0215	1	globals	1	1	1	1	0	1												
+221024_0215	1	subjects	Period	Subject	ClientNumber	LastClientNumber	Group	Profit	TotalProfit	Participate	EfficiencyFactor	Endowment	Contribution	TimeOKContributionEntryOK	SumC	N	TimeContinueProfitDisplayOK	LeaveStage		
+221024_0215	1	subjects	1	1	1	1	1	32	32	1	1.6	20	12	18	30	2	26	0		
+221024_0215	1	subjects	1	2	2	2	1	26	26	1	1.6	20	18	13	30	2	30	0		
+221024_0215	1	summary	Period																	
+221024_0215	1	summary	1																	
+221024_0215	1	contracts	Period																	
+221024_0215	1	clients	ClientNumber	ClientName	TreatmentNumber	Subject	StateString	RemainingSeconds	FinalProfit	MoneyAdded	ShowUpFee	ShowUpFeeInvested	MoneyToPay	MoneyEarned	LastClientNumber					
+221024_0215	1	clients	1	1	1	1	- Profit Display -	26	32	0	0	0	32	32	0					
+221024_0215	1	clients	2	2	1	2	- Profit Display -	26	26	0	0	0	26	26	0					
+221024_0215	1	treatments	TreatmentID	BaseTreatment	StartMethod	FileName	BackupFileName	NumberOfSubjects	TreatmentNumber	StartTimeString	EndTimeString	ErrorString	MessageString	EmptyString						
+221024_0215	1	treatments	1	1	menu	pg.ztt	C:\\Users\\you\\ztree-5_1_8\\@221024_0215_pg.ztt	2	1	2022-10-24T02:25:33.593-04:00	2022-10-24T02:25:57.908-04:00									
+221024_0215	1	sessionglobals																		
+221024_0215	1	sessionglobals																		
+221024_0215	1	participations	ParticipationID	ClientNumber	Subject	TreatmentNumber	StartInPeriod	FinishedPeriod												
+221024_0215	1	participations	1	1	1	1	1	1												
+221024_0215	1	participations	2	2	2	1	1	1												
+221024_0215	1	<<  end																		
+221024_0215	2	globals	Period	NumPeriods	TreatmentNumber	TreatmentID	RepeatTreatment	Repetition	MinGuess	MaxGuess	IncGuess	Factor	Prize							
+221024_0215	2	globals	1	1	2	2	0	1	0	100	1	0.666666667	50							
+221024_0215	2	table	Period																	
+221024_0215	2	subjects	Period	Subject	ClientNumber	LastClientNumber	Group	Profit	TotalProfit	Participate	Guess	TimeOKGuessOK	GroupAverage	TargetValue	Diff	BestDiff	IsWinner	NumWinners	TimeOKProfitDisplayOK	LeaveStage
+221024_0215	2	subjects	1	1	1	1	1	50	50	1	0	9	16.5	11	11	11	1	1	99999	0
+221024_0215	2	subjects	1	2	2	2	1	0	0	1	33	11	16.5	11	22	11	0	1	23	0
+221024_0215	2	summary	Period																	
+221024_0215	2	summary	1																	
+221024_0215	2	contracts	Period																	
+221024_0215	2	clients	ClientNumber	ClientName	TreatmentNumber	Subject	StateString	RemainingSeconds	FinalProfit	MoneyAdded	ShowUpFee	ShowUpFeeInvested	MoneyToPay	MoneyEarned	LastClientNumber					
+221024_0215	2	clients	1	1	2	1	- profit display -	23	82	0	0	0	82	82	0					
+221024_0215	2	clients	2	2	2	2	- profit display -	23	26	0	0	0	26	26	0					
+221024_0215	2	treatments	TreatmentID	BaseTreatment	StartMethod	FileName	BackupFileName	NumberOfSubjects	TreatmentNumber	StartTimeString	EndTimeString	ErrorString	MessageString	EmptyString						
+221024_0215	2	treatments	1	1	menu	pg.ztt	C:\\Users\\you\\ztree-5_1_8\\@221024_0215_pg.ztt	2	1	2022-10-24T02:25:33.593-04:00	2022-10-24T02:25:57.908-04:00									
+221024_0215	2	treatments	2	2	menu	GuessingGame.ztt	C:\\Users\\you\\ztree-5_1_8\\@221024_0215_GuessingGame.ztt	2	2	2022-10-24T02:26:17.848-04:00	2022-10-24T02:26:48.681-04:00									
+221024_0215	2	logfile	Period																	
+221024_0215	2	sessionglobals																		
+221024_0215	2	sessionglobals																		
+221024_0215	2	participations	ParticipationID	ClientNumber	Subject	TreatmentNumber	StartInPeriod	FinishedPeriod												
+221024_0215	2	participations	1	1	1	1	1	1												
+221024_0215	2	participations	2	2	2	1	1	1												
+221024_0215	2	participations	3	1	1	2	1	1												
+221024_0215	2	participations	4	2	2	2	1	1												
+221024_0215	2	<<  end																		
